@@ -14,9 +14,10 @@ const nunito = Nunito({
     subsets: ['latin']
 })
 
+
 export default function Banner() {
     return (
-        <div>
+        <div className='pt-16'>
             <Splide
                  options={{
                     type: 'loop',
@@ -42,7 +43,7 @@ export default function Banner() {
                                     </h1>
                                     <div className="flex flex-wrap gap-3">
                                         <button
-                                             className="px-4 py-2 rounded-xl border-1 hover:text-white hover:bg-[#799EFF] transition"
+                                             className="px-4 py-2 rounded-md border-1 hover:text-white hover:bg-[#799EFF] transition"
                                         >
                                             Shop Now
                                         </button>
@@ -83,7 +84,7 @@ export default function Banner() {
                                     </h1>
                                     <div className="flex flex-wrap gap-3">
                                         <button
-                                            className="px-4 py-2 rounded-xl border-1 hover:text-white hover:bg-[#799EFF] transition"
+                                            className="px-4 py-2 rounded-md border-1 hover:text-white hover:bg-[#799EFF] transition"
                                         >
                                             Shop Now
                                         </button>
@@ -124,7 +125,7 @@ export default function Banner() {
                                     </h1>
                                     <div className="flex flex-wrap gap-3">
                                         <button
-                                             className="px-4 py-2 rounded-xl border-1 hover:text-white hover:bg-[#799EFF] transition"
+                                             className="px-4 py-2 rounded-md border-1 hover:text-white hover:bg-[#799EFF] transition"
                                         >
                                             Shop Now
                                         </button>
