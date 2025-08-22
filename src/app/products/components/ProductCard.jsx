@@ -1,22 +1,19 @@
 import Image from 'next/image'
 import React from 'react'
 
-export default function ({product, ninuto}) {
+export default function ({product, nunito}) {
 
   return (
      <div className=" rounded-xl overflow-hidden border border-gray-200">
       {/* Image */}
-      <div className="flex justify-center p-3">
+      <div className="flex justify-center p-3 overflow-hidden">
         <Image 
           src={product.image}
           width={250}
           height={260}
           alt={product.name}
-
+          className='transition-transform duration-300 ease-in-out hover:scale-120'
         />
-        {/* <img
-          className=" object-contain"
-        /> */}
       </div>
 
       {/* Divider */}
@@ -31,12 +28,12 @@ export default function ({product, ninuto}) {
         </div>
 
         {/* Name */}
-        <h2 className={`text-lg font-bold text-gray-800 ${ninuto.className} hover:text-[#799EFF]`}>{product.name}</h2>
+        <h2 className={`text-lg font-bold text-gray-800 ${nunito.className} hover:text-[#799EFF]`}>{product.name}</h2>
 
         {/* Price + Unit */}
         <div className="flex justify-between text-gray-700 text-sm">
           <span>{product.price}: {product.currency}</span>
-          <span>/{product.unit}</span>
+          <span>{product.unit}</span>
         </div>
       </div>
     </div>

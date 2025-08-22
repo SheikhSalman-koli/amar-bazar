@@ -1,6 +1,7 @@
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navber from "./components/Navber/Navber";
+import NextAuthProvider from "./providers/nextAuthProvider";
 
 
 const poppins = Poppins({
@@ -16,12 +17,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <NextAuthProvider>
+
       <body
         className={`${poppins.className} antialiased`}
-      >
+        >
         <Navber/>
         {children}
       </body>
+        </NextAuthProvider>
     </html>
   );
 }

@@ -1,5 +1,11 @@
 import { MongoClient, ServerApiVersion } from 'mongodb'
 
+
+export const collectionName = {
+    PRODUCTS: "products",
+    USERS: "users"
+}
+
 export default function dbconnect(collectionName) {
     const uri = process.env.MONGOURI
     // Create a MongoClient with a MongoClientOptions object to set the Stable API version

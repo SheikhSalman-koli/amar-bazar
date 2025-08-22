@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
 import Logo from '../Logo/Logo'
+import {signIn} from 'next-auth/react'
 
 export default function Navber() {
 
     const links = <>
-     <li> <Link href='/items'>Items</Link></li>
+     <li> <Link href='/'>Home</Link></li>
+     <li> <Link href='/products'>Products</Link></li>
       <li><Link href='/add-item'>Add Item</Link></li>
     </>
 
@@ -32,7 +34,10 @@ export default function Navber() {
                 </ul>
             </div>
             <div className="navbar-end">
-                <button className="px-4 py-2 rounded-md border-1 hover:text-white hover:bg-[#799EFF] transition">Login</button>
+                <button 
+                className="px-4 py-2 rounded-md border-1 hover:text-white hover:bg-[#799EFF] transition">
+                    <Link href='/auth/login'>Login</Link>
+                </button>
             </div>
         </div>
         </div>

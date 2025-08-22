@@ -7,15 +7,18 @@ import hero3 from '../../../../public/assets/hero-3.png'
 import { Nunito } from "next/font/google";
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css';
-
+import { useSession } from 'next-auth/react'
 
 const nunito = Nunito({
     weight: ['400', '600', "700"],
     subsets: ['latin']
 })
 
-
 export default function Banner() {
+
+      const { data: session } = useSession()
+    console.log(session);
+
     return (
         <div className='pt-16'>
             <Splide

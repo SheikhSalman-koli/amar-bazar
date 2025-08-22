@@ -1,16 +1,16 @@
-import dbconnect from '@/lib/dbconnect'
+import dbconnect, { collectionName } from '@/lib/dbconnect'
 import React from 'react'
 import ProductCard from './ProductCard';
 import { Nunito } from 'next/font/google';
 
-const ninuto = Nunito({
+const nunito = Nunito({
     weight: ['400','600'],
     subsets: ['latin']
 })
 
 export default async function Products() {
 
-    const products =await dbconnect('products').find().limit(4).toArray()
+    const products =await dbconnect(collectionName.PRODUCTS).find().limit(4).toArray()
     // console.log(products);
 
 
@@ -18,7 +18,7 @@ export default async function Products() {
     <div className='px-2 space-y-8 lg:px-12'>
        <div className='space-y-2'>
          <h1 
-        className={`text-3xl font-bold ${ninuto.className}`}
+        className={`text-3xl font-bold ${nunito.className}`}
         >New <span className='text-[#977EFF]'>Arrivals</span></h1>
         <p>Shop online for new arrivals and get free shipping!</p>
        </div>
@@ -28,7 +28,7 @@ export default async function Products() {
                 (<ProductCard 
                 key={p?._id}
                 product={p}
-                ninuto={ninuto}
+                nunito={nunito}
                 />)
                 )}
         </div>
