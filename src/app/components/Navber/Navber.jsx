@@ -11,7 +11,7 @@ import './nav.css'
 export default function Navber() {
 
     const { data: session } = useSession()
-    console.log(session?.user);
+    // console.log(session?.user);
 
     const links = <>
         <li> <Link href='/'>Home</Link></li>

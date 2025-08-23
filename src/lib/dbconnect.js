@@ -6,8 +6,8 @@ export const collectionName = {
     USERS: "users"
 }
 
-export default function dbconnect(collectionName) {
-    const uri = process.env.MONGOURI
+export default async function dbconnect(collectionName) {
+    const uri =`mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@cluster0.dclhmji.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
     // Create a MongoClient with a MongoClientOptions object to set the Stable API version
     const client = new MongoClient(uri, {
         serverApi: {
@@ -17,5 +17,10 @@ export default function dbconnect(collectionName) {
         }
     });
 
-    return client.db(process.env.DB_NAME).collection(collectionName)
+    // return client.db(process.env.DBNAME).collection(collectionName)
+
+    await client.connect(); // Ensure connected
+    const db = client.db(process.env.DBNAME);
+
+    return db.collection(collectionName);
 }

@@ -5,7 +5,8 @@ import { NextResponse } from "next/server"
 export const POST =async (req)=>{
 
     const newProduct =await req.json()
-    const database = dbconnect(collectionName.PRODUCTS)
+    // console.log(newProduct);
+    const database =await dbconnect(collectionName.PRODUCTS)
     const result = await database.insertOne(newProduct)
 
     result.insertedId = result.insertedId.toString()

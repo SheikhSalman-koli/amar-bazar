@@ -1,11 +1,14 @@
 import Image from 'next/image'
 import React from 'react'
+import { headers } from 'next/headers';
 
 export default async function page({params}) {
 
    const id = await params?.id
 
-   const res = await fetch(`http://localhost:3000/api/product/${id}`)
+   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/product/${id}`,{
+        headers: new Headers(await headers()) 
+   })
    const product =await res.json()
   //  console.log(product);
 

@@ -16,8 +16,8 @@ export default function ({product, nunito}) {
           className='transition-transform duration-300 ease-in-out hover:scale-120'
         /> */}
         <img
-          src={product.image}
-          alt={product.name}
+          src={product?.image}
+          alt={product?.name}
           className='transition-transform duration-300 ease-in-out hover:scale-120'
         /> 
       </div>
@@ -30,16 +30,16 @@ export default function ({product, nunito}) {
         {/* Category + Ratings */}
         <div className="flex justify-between text-sm text-gray-500">
           <span className="capitalize">{product?.category}</span>
-          <span>⭐ {product?.ratings.average}</span>
+          <span>⭐ {product?.ratings?.average}</span>
         </div>
 
         {/* Name */}
-        <h2 className={`text-lg font-bold  ${nunito.className} hover:text-[#799EFF]`}>{product?.name}</h2>
+        <h2 className={`text-lg font-bold  ${nunito?.className} hover:text-[#799EFF]`}>{product?.name}</h2>
 
         {/* Price + Unit */}
         <div className="flex justify-between  text-sm">
           <span>{product?.price}: {product?.currency}</span>
-          <span>{product?.unit}</span>
+          <span>per: {product?.unit}</span>
         </div>
 
         <div className='mt-4'>

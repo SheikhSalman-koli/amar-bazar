@@ -10,7 +10,8 @@ const nunito = Nunito({
 
 export default async function Products() {
 
-    const products =await dbconnect(collectionName.PRODUCTS).find().limit(4).toArray()
+    const collection = await dbconnect(collectionName?.PRODUCTS);
+const products = await collection?.find({}).limit(4).toArray();
     // console.log(products);
 
 
