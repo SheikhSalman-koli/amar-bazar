@@ -1,5 +1,6 @@
 import React from 'react'
 import LoginForm from '../components/LoginForm'
+import SocialLogin from '../socialLogin/SocialLogin'
 
 export default function page() {
   return (
@@ -20,21 +21,26 @@ export default function page() {
           Sign in with Google
         </button> */}
 
-        {/* <div className="flex items-center justify-center space-x-2 text-gray-400">
-          <span className="h-px w-8 bg-gray-300 inline-block"></span>
-          <span>or</span>
-          <span className="h-px w-8 bg-gray-300 inline-block"></span>
-        </div> */}
+     
 
         {/* Credentials Login */}
        
           <LoginForm />
-        <p className="text-center text-gray-500 text-sm">
+        {/* <p className="text-center text-gray-500 text-sm">
           Don’t have an account?{" "}
           <a href="/auth/signup" className="text-[#799EFF] hover:underline">
             Sign Up
           </a>
-        </p>
+        </p> */}
+
+             <div className="flex items-center justify-center space-x-2 text-gray-400">
+          <span className="h-px w-8 bg-gray-300 inline-block"></span>
+          <span>or</span>
+          <span className="h-px w-8 bg-gray-300 inline-block"></span>
+        </div>
+
+          <SocialLogin />
+
       </div>
     </div>
   )

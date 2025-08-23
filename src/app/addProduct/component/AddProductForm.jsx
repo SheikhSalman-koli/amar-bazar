@@ -124,7 +124,7 @@ export default function AddProductForm() {
           <input {...register("tags")} placeholder="comma separated (e.g. organic, fresh)" className="w-full p-2 border rounded" />
         </div>
 
-        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
+        <button type="submit" className="w-full bg-[#799EFF] text-white py-2 rounded hover:bg-blue-500">
           {loader ? (<span className="loading loading-spinner text-warning"></span>) : "Add Product"}
         </button>
       </form>

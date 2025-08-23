@@ -3,7 +3,8 @@
 import Link from 'next/link'
 import React from 'react'
 import Logo from '../Logo/Logo'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
+import { FaUserLarge } from "react-icons/fa6";
 import Swal from 'sweetalert2'
 import './nav.css'
 
@@ -24,7 +25,7 @@ export default function Navber() {
     }
 
     return (
-        <div className='fixed w-full shadow-sm bg-base-100 z-50 px-2 lg:px-12'>
+        <div className='fixed w-full border-b-1 border-gray-200 bg-base-100 z-50 px-2 lg:px-12'>
 
             <div className="navbar ">
                 <div className="navbar-start">
@@ -39,6 +40,7 @@ export default function Navber() {
                         </ul>
                     </div>
                     <Logo />
+
                     <label className="swap swap-rotate ml-3">
                         {/* this hidden checkbox controls the state */}
                         <input type="checkbox" className="theme-controller" value="synthwave" />
@@ -70,12 +72,25 @@ export default function Navber() {
                 <div className="navbar-end">
                     {
                         session?.user ?
-                            <button
-                                className="px-4 py-2 rounded-md border-1 hover:text-white hover:bg-[#799EFF] transition"
-                                onClick={handleLogout}
-                            >
-                                Logout
-                            </button>
+                            <div className="dropdown">
+                                <div tabIndex={0} role="button">
+                                    <div className="tooltip tooltip-left" data-tip={`${session?.user?.email}`}>
+                                         <FaUserLarge size={30} />
+                                    </div>
+                                  
+                                </div>
+                                <ul
+                                    tabIndex={0}
+                                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 right-0 p-2 shadow">
+                                    <button
+                                        className="px-4 py-2 rounded-md border-1 hover:text-white hover:bg-[#799EFF] transition"
+                                        onClick={handleLogout}
+                                    >
+                                        Logout
+                                    </button>
+                                </ul>
+                            </div>
+
                             :
                             <button
                                 className="px-4 py-2 rounded-md border-1 hover:text-white hover:bg-[#799EFF] transition">
@@ -85,6 +100,7 @@ export default function Navber() {
 
                 </div>
             </div>
+
         </div>
     )
 }

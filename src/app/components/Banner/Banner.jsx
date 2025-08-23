@@ -16,9 +16,6 @@ const nunito = Nunito({
 
 export default function Banner() {
 
-      const { data: session } = useSession()
-    console.log(session);
-
     return (
         <div className='pt-16'>
             <Splide
