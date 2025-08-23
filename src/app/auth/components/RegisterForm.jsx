@@ -1,6 +1,8 @@
 "use client"
 import { saveUsers } from '@/app/actions/auth/saveUsers'
+import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
+import Swal from 'sweetalert2'
 
 // can not create user or register by next.js without database, save users in DB is creating user here. 
 
@@ -9,8 +11,12 @@ export default function RegisterForm() {
 // const [password, setPassword] = useState("");
 //   const [confirmPassword, setConfirmPassword] = useState("");
 //   const realPAssword = password === confirmPassword
+const [loader, setLoader] = useState(false)
+
+const route = useRouter()
 
   const handleRegister =async(e)=>{
+    setLoader(true)
         e.preventDefault()
         const form = e.target
         const name = form.name.value
@@ -24,14 +30,22 @@ export default function RegisterForm() {
         }
 
         const res =await saveUsers(payload);
-        console.log(res);
+        setLoader(false)
+        if(res?.insertedId){
+            Swal.fire({
+                icon: "success",
+                title:"Registration Successfull!",
+                text: "now you can login with your registered email & passwrod"
+            })
+            route.push('/auth/login')
+        }
   }
 
     return (
         <div>
             <form className="space-y-4" onSubmit={handleRegister}>
                 <div>
-                    <label className="block text-gray-700 mb-1">Name</label>
+                    <label className="block text-gray-600 mb-1">Name</label>
                     <input
                         type="text"
                         className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -41,7 +55,7 @@ export default function RegisterForm() {
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-700 mb-1">Email</label>
+                    <label className="block text-gray-600 mb-1">Email</label>
                     <input
                         type="email"
                         className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -51,7 +65,7 @@ export default function RegisterForm() {
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-700 mb-1">Photo</label>
+                    <label className="block text-gray-600 mb-1">Photo</label>
                     <input
                         type="text"
                         className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -61,7 +75,7 @@ export default function RegisterForm() {
                     />
                 </div>
                 <div>
-                    <label className="block text-gray-700 mb-1">Password</label>
+                    <label className="block text-gray-600 mb-1">Password</label>
                     <input
                         type="password"
                         name='password'
@@ -73,7 +87,7 @@ export default function RegisterForm() {
                     />
                 </div>
                 {/* <div>
-                    <label className="block text-gray-700 mb-1">Confirm Password</label>
+                    <label className="block text-gray-600 mb-1">Confirm Password</label>
                     <input
                         type="password"
                         name='password'
@@ -88,7 +102,7 @@ export default function RegisterForm() {
                     type="submit"
                     className="w-full bg-[#799EFF] text-white rounded px-4 py-2 hover:bg-blue-500 transition"
                 >
-                    Sign Up
+                    {loader ? (<span className="loading loading-spinner text-warning"></span>) : "Sign Up"}
                 </button>
             </form>
         </div>

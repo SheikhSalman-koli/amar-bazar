@@ -3,8 +3,8 @@ import LoginForm from '../components/LoginForm'
 
 export default function page() {
   return (
-   <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4 pt-16">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8 space-y-6">
+   <div className="min-h-screen flex items-center justify-center  px-4 pt-16">
+      <div className="max-w-md w-full border-1 border-gray-300 rounded-xl  p-8 space-y-6">
         <h2 className="text-2xl font-bold text-center text-[#799FEE]">Sign in to Your Account</h2>
 
         {/* Google Login */}

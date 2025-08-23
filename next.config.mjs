@@ -11,8 +11,8 @@ const nextConfig = {
         hostname: 'images.unsplash.com',
       },
       {
-        protocol: 'https',
-        hostname: 'i.ibb.co.com',
+         protocol: 'https',
+        hostname: 'i.ibb.co',
       }
     ],
   },

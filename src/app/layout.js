@@ -2,6 +2,8 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navber from "./components/Navber/Navber";
 import NextAuthProvider from "./providers/nextAuthProvider";
+import { Toaster } from "react-hot-toast";
+import Footer from "./components/footer/Footer";
 
 
 const poppins = Poppins({
@@ -19,13 +21,18 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <NextAuthProvider>
 
-      <body
-        className={`${poppins.className} antialiased`}
+        <body
+          className={`${poppins.className} antialiased`}
         >
-        <Navber/>
-        {children}
-      </body>
-        </NextAuthProvider>
+          <Navber />
+          <Toaster
+            position="top-right"
+            reverseOrder={false}
+          />
+          {children}
+          <Footer />
+        </body>
+      </NextAuthProvider>
     </html>
   );
 }
