@@ -3,6 +3,8 @@ import { saveUsers } from '@/app/actions/auth/saveUsers'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 import Swal from 'sweetalert2'
+import { IoMdEyeOff } from "react-icons/io";
+import { IoMdEye } from "react-icons/io";
 
 // can not create user or register by next.js without database, save users in DB is creating user here. 
 
@@ -41,6 +43,8 @@ const route = useRouter()
         }
   }
 
+  const [isPassword, setISPAssword] = useState(true)
+
     return (
         <div>
             <form className="space-y-4" onSubmit={handleRegister}>
@@ -74,10 +78,10 @@ const route = useRouter()
                         required
                     />
                 </div>
-                <div>
+                <div className='relative'>
                     <label className="block text-gray-600 mb-1">Password</label>
                     <input
-                        type="password"
+                        type={`${isPassword ? "password" : "text"}`}
                         name='password'
                         className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         //   value={password}
@@ -85,6 +89,12 @@ const route = useRouter()
                         placeholder="Enter your password"
                         required
                     />
+                    <button 
+                    type='button' 
+                    onClick={()=> 
+                    setISPAssword(!isPassword)}
+                    className='absolute right-4 mt-2.5'
+                    >{isPassword ? <IoMdEye size={20}/> : <IoMdEyeOff size={20}/>}</button>
                 </div>
                 {/* <div>
                     <label className="block text-gray-600 mb-1">Confirm Password</label>

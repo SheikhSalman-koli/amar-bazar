@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions = {
+    // session: { strategy: "jwt" },
     providers: [
         CredentialsProvider({
             // The name to display on the sign in form (e.g. "Sign in with...")
@@ -18,12 +19,13 @@ export const authOptions = {
             async authorize(credentials, req) {
 
                 // Add logic here to look up the user from the credentials supplied
-                // const user =await isRegister(credentials)
-                // console.log("FROM DB", user);
-                const user = credentials
+                const user =await isRegister(credentials)
+                console.log("FROM DB", user);
+                // const user = credentials
+
                 if (user) {
                     // Any object returned will be saved in `user` property of the JWT
-                    return user
+                    return user 
                 } else {
                     // If you return null then an error will be displayed advising the user to check their details.
                     return null
@@ -37,7 +39,20 @@ export const authOptions = {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
         })
     ],
+
     pages: {
         signIn: '/auth/login'
-    }
+    },
+
+    // callbacks: {
+    //     async jwt({ token, user }) {
+    //         if (user) token.user = user; // store user info in JWT
+    //         return token;
+    //     },
+    //     async session({ session, token }) {
+    //         if (token?.user) session.user = token.user;
+    //         return session;
+    //     },
+    // },
+    // secret: process.env.NEXTAUTH_SECRET,
 }

@@ -1,14 +1,15 @@
-import dbconnect, { collectionName } from '@/lib/dbconnect'
+// import dbconnect, { collectionName } from '@/lib/dbconnect'
 import React from 'react'
-import ProductCard from './ProductCard';
 import { Nunito } from 'next/font/google';
+import ProductCard from '@/app/components/card/ProductCard';
+import dbconnect, { collectionName } from '@/lib/dbconnect';
 
 const nunito = Nunito({
     weight: ['400','600'],
     subsets: ['latin']
 })
 
-export default async function Products() {
+export default async function LatestProducts() {
 
     const collection = await dbconnect(collectionName?.PRODUCTS);
 const products = await collection?.find({}).limit(4).toArray();
@@ -26,7 +27,7 @@ const products = await collection?.find({}).limit(4).toArray();
 
         <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6'>
             {products.map(p => 
-                (<ProductCard 
+                (<ProductCard
                 key={p?._id}
                 product={p}
                 nunito={nunito}

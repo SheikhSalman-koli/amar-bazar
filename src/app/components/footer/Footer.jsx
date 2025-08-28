@@ -49,7 +49,7 @@ export default function Footer() {
                 </div>
             </nav>
             <aside>
-                <p>Copyright © {new Date().getFullYear()} - All right reserved by AMAR-BAZAR Ltd</p>
+                <p>Copyright © {new Date().getFullYear()} - All right reserved by Organic-Food Ltd</p>
             </aside>
         </footer>
     )

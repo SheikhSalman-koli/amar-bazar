@@ -4,7 +4,7 @@ import dbconnect, { collectionName } from "@/lib/dbconnect"
 
 export const saveUsers =async (payload)=> {
 
-    const database = dbconnect(collectionName.USERS)
+    const database =await dbconnect(collectionName.USERS)
 
     const {email, password} = payload
     if(!email || !password){
@@ -16,6 +16,6 @@ export const saveUsers =async (payload)=> {
     if(existingUser) return null
 
     const result =await database.insertOne(payload)
-    result.insertedId = result.insertedId.toString()
+    result.insertedId = result?.insertedId.toString()
     return result
 }

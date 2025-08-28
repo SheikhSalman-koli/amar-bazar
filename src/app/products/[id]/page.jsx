@@ -18,8 +18,8 @@ export default async function page({params}) {
       {/* Left: Product Image */}
       <div className="flex justify-center items-center border rounded-xl p-4">
         <img
-          src={product.image}
-          alt={product.name}
+          src={product?.image}
+          alt={product?.name}
           className="w-80 object-contain rounded-lg transition-transform duration-300 ease-in-out hover:scale-105"
         />
         {/* have to fix the issue */}
@@ -37,44 +37,44 @@ export default async function page({params}) {
         {/* Category + Ratings */}
         <div className="flex justify-between items-center text-sm text-gray-500">
           <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full">
-            {product.category}
+            {product?.category}
           </span>
-          <span>⭐ {product.ratings?.average} ({product.ratings?.totalReviews} reviews)</span>
+          <span>⭐ {product?.ratings?.average} ({product?.ratings?.totalReviews} reviews)</span>
         </div>
 
         {/* Product Name */}
-        <h1 className="text-2xl font-semibold ">{product.name}</h1>
+        <h1 className="text-2xl font-semibold ">{product?.name}</h1>
 
         {/* Description */}
-        <p className="text-gray-500">{product.description}</p>
+        <p className="text-gray-500">{product?.description}</p>
 
         {/* Price + Unit */}
         <div className="flex justify-between items-center border-t pt-3">
           <div>
-            {product.discount?.isDiscounted ? (
+            {product?.discount?.isDiscounted ? (
               <div>
                 <span className="text-red-600 font-bold text-xl">
-                  {product.price - (product.price * product.discount.discountPercent) / 100} {product.currency}
+                  {product?.price - (product?.price * product?.discount.discountPercent) / 100} {product?.currency}
                 </span>
                 <span className="line-through text-gray-400 ml-2">
-                  {product.price} {product.currency}
+                  {product?.price} {product?.currency}
                 </span>
               </div>
             ) : (
-              <span className="text-xl font-bold">{product.price} {product.currency}</span>
+              <span className="text-xl font-bold">{product?.price} {product?.currency}</span>
             )}
-            <p className="text-gray-500 text-sm">per {product.unit}</p>
+            <p className="text-gray-500 text-sm">per {product?.unit}</p>
           </div>
         </div>
 
         {/* Stock */}
         <p className="text-sm text-gray-500">
-          In Stock: <span className="font-medium">{product.stock}</span>
+          In Stock: <span className="font-medium">{product?.stock}</span>
         </p>
 
         {/* Tags */}
         <div className="flex gap-2 flex-wrap">
-          {product.tags?.map((tag, i) => (
+          {product?.tags?.map((tag, i) => (
             <span key={i} className="px-2 py-1 bg-gray-100 rounded-md text-gray-600 text-sm">
               #{tag}
             </span>
@@ -83,7 +83,7 @@ export default async function page({params}) {
 
         {/* Buttons */}
         <div className="flex gap-4 pt-4">
-          <button className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+          <button className="px-2 lg:px-6 py-1 lg:py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
             Add to Cart
           </button>
           <button className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-100">

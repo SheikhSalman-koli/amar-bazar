@@ -20,7 +20,7 @@ export default async function dbconnect(collectionName) {
     // return client.db(process.env.DBNAME).collection(collectionName)
 
     await client.connect(); // Ensure connected
-    const db = client.db(process.env.DBNAME);
+    const db = client.db(process.env.DB_NAME);
 
     return db.collection(collectionName);
 }
