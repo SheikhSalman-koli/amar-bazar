@@ -20,8 +20,8 @@ If you prefer using credentials, you have to **register first**, then login with
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/organic.git
-cd organic
+git clone https://github.com/SheikhSalman-koli/amar-bazar
+cd your project name
 
 ---
 
